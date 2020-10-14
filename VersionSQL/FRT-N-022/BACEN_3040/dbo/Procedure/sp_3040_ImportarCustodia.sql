@@ -195,8 +195,8 @@ BEGIN
 				INNER JOIN	  FIDC_CUSTODIA_HML.dbo.TB_FAIXA_PDD				 AS    fp   WITH (NOLOCK) ON  (e.ID_FAIXA_PDD		 =    fp.ID_FAIXA_PDD)
 				WHERE          e.DT        =    @dtPosicao
 				AND            f.NU_CNPJ   =    @cnpjFundo
-				AND			   R.VL_AQUISICAO <> 0 
-				AND			   R.VL_NOMINAL <> 0   
+				AND			   R.VL_AQUISICAO > 0 
+				AND			   R.VL_NOMINAL > 0   
 
 				UNION ALL
 
@@ -247,8 +247,8 @@ BEGIN
 				INNER JOIN	  FIDC_CUSTODIA_HML_2.dbo.TB_FAIXA_PDD				 AS    fp   WITH (NOLOCK) ON  (e.ID_FAIXA_PDD		 =    fp.ID_FAIXA_PDD)
 				WHERE          e.DT        =    @dtPosicao
 				AND            f.NU_CNPJ   =    @cnpjFundo
-				AND			   R.VL_AQUISICAO <> 0 
-				AND			   R.VL_NOMINAL <> 0
+				AND			   R.VL_AQUISICAO > 0 
+				AND			   R.VL_NOMINAL > 0
 
 			SET @qtImpOp = @@ROWCOUNT
 			SET @dtImpOp = GETDATE()
@@ -351,8 +351,8 @@ BEGIN
 			INNER JOIN    FIDC_CUSTODIA_HML.dbo.TB_TIPO_MOVIMENTACAO        AS    tmm  WITH (NOLOCK) ON  (tmm.CD_TIPO_MOVIMENTACAO =    tm.CD_TIPO_MOVIMENTACAO)
 			WHERE          m.DT    between @minDate and @maxDate
 			AND            f.NU_CNPJ   =   @cnpjFundo
-			AND			   R.VL_AQUISICAO <> 0 
-			AND			   R.VL_NOMINAL <> 0   
+			AND			   R.VL_AQUISICAO > 0 
+			AND			   R.VL_NOMINAL > 0   
 			AND            TMM.IC_BAIXAR_ATIVO = 1
 
 			UNION ALL
@@ -408,8 +408,8 @@ BEGIN
 			INNER JOIN    FIDC_CUSTODIA_HML_2.dbo.TB_TIPO_MOVIMENTACAO        AS    tmm  WITH (NOLOCK) ON  (tmm.CD_TIPO_MOVIMENTACAO =    tm.CD_TIPO_MOVIMENTACAO)
 			WHERE          m.DT    between @minDate and @maxDate
 			AND            f.NU_CNPJ   =   @cnpjFundo
-			AND			   R.VL_AQUISICAO <> 0 
-			AND			   R.VL_NOMINAL <> 0   
+			AND			   R.VL_AQUISICAO > 0 
+			AND			   R.VL_NOMINAL > 0   
 			AND            TMM.IC_BAIXAR_ATIVO = 1
 			
 			SET @qtImpOp = @@ROWCOUNT
@@ -860,8 +860,8 @@ BEGIN
 		INNER JOIN	  FIDC_CUSTODIA_HML.dbo.TB_FAIXA_PDD	       AS    fp   WITH (NOLOCK) ON  (e.ID_FAIXA_PDD = fp.ID_FAIXA_PDD)
 		WHERE          e.DT        =    @dtPosicao
 		AND            f.NU_CNPJ   =    @cnpjFundo
-		AND			   R.VL_AQUISICAO <> 0 -- TESTE DIOGO
-		AND			   R.VL_NOMINAL <> 0   -- TESTE DIOGO
+		AND			   R.VL_AQUISICAO > 0 -- TESTE DIOGO
+		AND			   R.VL_NOMINAL > 0   -- TESTE DIOGO
 		GROUP BY f.NU_CNPJ,
 	             r.ID_ARQUIVO,
 				 r.IC_COOBRIGACAO,
@@ -918,8 +918,8 @@ BEGIN
 		INNER JOIN	  FIDC_CUSTODIA_HML_2.dbo.TB_FAIXA_PDD	       AS    fp   WITH (NOLOCK) ON  (e.ID_FAIXA_PDD = fp.ID_FAIXA_PDD)
 		WHERE          e.DT        =    @dtPosicao
 		AND            f.NU_CNPJ   =    @cnpjFundo
-		AND			   R.VL_AQUISICAO <> 0 -- TESTE DIOGO
-		AND			   R.VL_NOMINAL <> 0   -- TESTE DIOGO
+		AND			   R.VL_AQUISICAO > 0 -- TESTE DIOGO
+		AND			   R.VL_NOMINAL > 0   -- TESTE DIOGO
 		GROUP BY f.NU_CNPJ,
 	             r.ID_ARQUIVO,
 				 r.IC_COOBRIGACAO,
@@ -1022,8 +1022,8 @@ BEGIN
 		INNER JOIN    FIDC_CUSTODIA_HML.DBO.TB_TIPO_MOVIMENTACAO  AS    TMM  WITH (NOLOCK) ON  (TMM.CD_TIPO_MOVIMENTACAO =    TM.CD_TIPO_MOVIMENTACAO)	
 		WHERE          M.DT    BETWEEN @MINDATE AND @MAXDATE
 		AND            F.NU_CNPJ   =   @CNPJFUNDO
-		AND			   R.VL_AQUISICAO <> 0 
-		AND			   R.VL_NOMINAL <> 0   
+		AND			   R.VL_AQUISICAO > 0 
+		AND			   R.VL_NOMINAL > 0   
 		AND            TMM.IC_BAIXAR_ATIVO = 1
 		GROUP BY F.NU_CNPJ,
 	             R.ID_ARQUIVO,
@@ -1084,8 +1084,8 @@ BEGIN
 		INNER JOIN    FIDC_CUSTODIA_HML_2.DBO.TB_TIPO_MOVIMENTACAO  AS    TMM  WITH (NOLOCK) ON  (TMM.CD_TIPO_MOVIMENTACAO =    TM.CD_TIPO_MOVIMENTACAO)	
 		WHERE          M.DT    BETWEEN @MINDATE AND @MAXDATE
 		AND            F.NU_CNPJ   =   @CNPJFUNDO
-		AND			   R.VL_AQUISICAO <> 0 
-		AND			   R.VL_NOMINAL <> 0   
+		AND			   R.VL_AQUISICAO > 0 
+		AND			   R.VL_NOMINAL > 0   
 		AND            TMM.IC_BAIXAR_ATIVO = 1
 		GROUP BY F.NU_CNPJ,
 	             R.ID_ARQUIVO,
